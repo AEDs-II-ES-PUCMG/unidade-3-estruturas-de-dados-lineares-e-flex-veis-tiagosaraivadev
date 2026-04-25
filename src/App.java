@@ -215,6 +215,13 @@ public class App {
     	
     	// TODO
     }
+
+    public static void listarNumeroMatricula() {
+
+        int numeroMatricula = lerOpcao("Digite o numero da sua matricula: ", Integer.class);
+
+        Pilha<Integer> pilhaNumerosMatricula = new Pilha<>();
+    }
     
 	public static void main(String[] args) {
 		
