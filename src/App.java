@@ -77,35 +77,35 @@ public class App {
      * @param nomeArquivoDados Nome do arquivo de dados a ser aberto.
      * @return Um vetor com os produtos carregados, ou vazio em caso de problemas de leitura.
      */
-    static Produto[] lerProdutos(String nomeArquivoDados) {
+    // static Produto[] lerProdutos(String nomeArquivoDados) {
     	
-    	Scanner arquivo = null;
-    	int numProdutos;
-    	String linha;
-    	Produto produto;
-    	Produto[] produtosCadastrados;
+    // 	Scanner arquivo = null;
+    // 	int numProdutos;
+    // 	String linha;
+    // 	Produto produto;
+    // 	Produto[] produtosCadastrados;
     	
-    	try {
-    		arquivo = new Scanner(new File(nomeArquivoDados), Charset.forName("UTF-8"));
+    // 	try {
+    // 		arquivo = new Scanner(new File(nomeArquivoDados), Charset.forName("UTF-8"));
     		
-    		numProdutos = Integer.parseInt(arquivo.nextLine());
-    		produtosCadastrados = new Produto[numProdutos];
+    // 		numProdutos = Integer.parseInt(arquivo.nextLine());
+    // 		produtosCadastrados = new Produto[numProdutos];
     		
-    		for (int i = 0; i < numProdutos; i++) {
-    			linha = arquivo.nextLine();
-    			produto = Produto.criarDoTexto(linha);
-    			produtosCadastrados[i] = produto;
-    		}
-    		quantosProdutos = numProdutos;
+    // 		for (int i = 0; i < numProdutos; i++) {
+    // 			linha = arquivo.nextLine();
+    // 			produto = Produto.criarDoTexto(linha);
+    // 			produtosCadastrados[i] = produto;
+    // 		}
+    // 		quantosProdutos = numProdutos;
     		
-    	} catch (IOException excecaoArquivo) {
-    		produtosCadastrados = null;
-    	} finally {
-    		arquivo.close();
-    	}
+    // 	} catch (IOException excecaoArquivo) {
+    // 		produtosCadastrados = null;
+    // 	} finally {
+    // 		arquivo.close();
+    // 	}
     	
-    	return produtosCadastrados;
-    }
+    // 	return produtosCadastrados;
+    // }
     
     /** Localiza um produto no vetor de produtos cadastrados, a partir do código de produto informado pelo usuário, e o retorna. 
      *  Em caso de não encontrar o produto, retorna null 
@@ -202,28 +202,42 @@ public class App {
     	return pedido;
     }
     
-    /**
-     * Finaliza um pedido, momento no qual ele deve ser armazenado em uma pilha de pedidos.
-     * @param pedido O pedido que deve ser finalizado.
-     */
-    public static void finalizarPedido(Pedido pedido) {
+    // /**
+    //  * Finaliza um pedido, momento no qual ele deve ser armazenado em uma pilha de pedidos.
+    //  * @param pedido O pedido que deve ser finalizado.
+    //  */
+    // public static void finalizarPedido(Pedido pedido) {
     	
-    	// TODO
-    }
+    // 	// TODO
+    // }
     
-    public static void listarProdutosPedidosRecentes() {
+    // public static void listarProdutosPedidosRecentes() {
     	
-    	// TODO
+    // 	// TODO
+    // }
+
+    public static void listarCaracteresNomeSobrenome() {
+        char[] nomeSobrenome = {'t','i','a','g','o','v','i','t','o','r'};
+        Fila<Character> filaNome = new Fila<>();
+
+        for (char c : nomeSobrenome) {
+            filaNome.enfileirar(c);
+        }
+
+        int qtdLetrasRepetidas = filaNome.contarOcorrenciasRepetidas('o');
+
+        filaNome.imprimir();
+        System.out.println("Caracteres Repetidos: " + qtdLetrasRepetidas);
     }
     
 	public static void main(String[] args) {
 		
 		teclado = new Scanner(System.in, Charset.forName("UTF-8"));
         
-		nomeArquivoDados = "produtos.txt";
-        produtosCadastrados = lerProdutos(nomeArquivoDados);
+		//nomeArquivoDados = "produtos.txt";
+        //produtosCadastrados = lerProdutos(nomeArquivoDados);
         
-        Pedido pedido = null;
+        //Pedido pedido = null;
         
         int opcao = -1;
       
@@ -233,9 +247,10 @@ public class App {
                 case 1 -> listarTodosOsProdutos();
                 case 2 -> mostrarProduto(localizarProduto());
                 case 3 -> mostrarProduto(localizarProdutoDescricao());
-                case 4 -> pedido = iniciarPedido();
-                case 5 -> finalizarPedido(pedido);
-                case 6 -> listarProdutosPedidosRecentes();
+                //case 4 -> pedido = iniciarPedido();
+                // case 5 -> finalizarPedido(pedido);
+                // case 6 -> listarProdutosPedidosRecentes();
+                case 7 -> listarCaracteresNomeSobrenome();
             }
             pausa();
         }while(opcao != 0);       
